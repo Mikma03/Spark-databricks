@@ -5,30 +5,21 @@
     - [Microsoft path for Databricks - Machine Learning](#microsoft-path-for-databricks---machine-learning)
     - [Microsoft path for Databricks - Data Science](#microsoft-path-for-databricks---data-science)
 - [Databricks Academy](#databricks-academy)
-    - [Databricks path for certification](#databricks-path-for-certification)
+    - [Databricks path for certification - Spark Developer](#databricks-path-for-certification---spark-developer)
+    - [Data Engineer Learning Plan](#data-engineer-learning-plan)
 - [YouTube course](#youtube-course)
     - [Azure Databricks](#azure-databricks)
 - [Udemy courses](#udemy-courses)
     - [Taming Big Data with Apache Spark and Python - Hands On!](#taming-big-data-with-apache-spark-and-python---hands-on)
     - [Azure Databricks & Spark Core For Data Engineers(Python/SQL)](#azure-databricks--spark-core-for-data-engineerspythonsql)
-    - [Apache Spark 3 - Databricks Certified Associate Developer - Scala](#apache-spark-3---databricks-certified-associate-developer---scala)
     - [Databricks Certified Associate Developer - Apache Spark 2022](#databricks-certified-associate-developer---apache-spark-2022)
     - [Complete PySpark Developer Course](#complete-pyspark-developer-course)
     - [PySpark Project- End to End Real Time Project Implementation](#pyspark-project--end-to-end-real-time-project-implementation)
     - [PySpark Essentials for Data Scientists (Big Data + Python)](#pyspark-essentials-for-data-scientists-big-data--python)
     - [Spark SQL and PySpark 3 using Python 3 Hands-On with Labs](#spark-sql-and-pyspark-3-using-python-3-hands-on-with-labs)
-- [Books](#books)
+- [Apache Spark Books](#apache-spark-books)
     - [Learning Spark, 2nd Edition](#learning-spark-2nd-edition)
     - [Spark: The Definitive Guide](#spark-the-definitive-guide)
-    - [PySpark SQL Recipes: With HiveQL, Dataframe and Graphframes](#pyspark-sql-recipes-with-hiveql-dataframe-and-graphframes)
-    - [Data Analysis with Python and PySpark](#data-analysis-with-python-and-pyspark)
-    - [Essential PySpark for Scalable Data Analytics](#essential-pyspark-for-scalable-data-analytics)
-    - [Advanced Analytics with PySpark](#advanced-analytics-with-pyspark)
-    - [Learn PySpark: Build Python-based Machine Learning and Deep Learning Models](#learn-pyspark-build-python-based-machine-learning-and-deep-learning-models)
-    - [Applied Data Science Using PySpark: Learn the End-to-End Predictive Model-Building Cycle](#applied-data-science-using-pyspark-learn-the-end-to-end-predictive-model-building-cycle)
-    - [Apache Spark Deep Learning Cookbook](#apache-spark-deep-learning-cookbook)
-    - [Modern Data Engineering with Apache Spark: A Hands-On Guide for Building Mission-Critical Streaming Applications](#modern-data-engineering-with-apache-spark-a-hands-on-guide-for-building-mission-critical-streaming-applications)
-    - [Beginning Apache Spark 3: With DataFrame, Spark SQL, Structured Streaming, and Spark Machine Learning Library](#beginning-apache-spark-3-with-dataframe-spark-sql-structured-streaming-and-spark-machine-learning-library)
 - [Oreilly courses](#oreilly-courses)
     - [Apache Spark 3 for Data Engineering and Analytics with Python](#apache-spark-3-for-data-engineering-and-analytics-with-python)
     - [Apache Spark 3 Advance Skills for Cracking Job Interviews](#apache-spark-3-advance-skills-for-cracking-job-interviews)
@@ -50,15 +41,17 @@
     - [Data Science on AWS](#data-science-on-aws)
     - [AWS Certified Data Analytics Study Guide](#aws-certified-data-analytics-study-guide)
     - [AWS Certified Machine Learning Study Guide](#aws-certified-machine-learning-study-guide)
+- [AWS Microservice](#aws-microservice)
     - [Security and Microservice Architecture on AWS](#security-and-microservice-architecture-on-aws)
     - [Serverless Architectures on AWS, Second Edition](#serverless-architectures-on-aws-second-edition)
 
 <!-- /TOC -->
 
-___
+---
 
 # Microsoft dedicated paths
-___
+
+---
 
 ### Microsoft path for Databricks - Data Engineering
 
@@ -73,30 +66,34 @@ https://docs.microsoft.com/en-us/learn/paths/build-operate-machine-learning-solu
 https://docs.microsoft.com/en-ie/learn/paths/perform-data-science-azure-databricks/?WT.mc_id=AI-MVP-5004069
 
 ---
-test1
+
 # Databricks Academy
 
-___
+---
 
-### Databricks path for certification
+### Databricks path for certification - Spark Developer
 
 https://partner-academy.databricks.com/pages/21/home
+
+### Data Engineer Learning Plan
+
+https://partner-academy.databricks.com/learn/lp/10/data-engineer-learning-plan
 
 ---
 
 # YouTube course
 
-___
+---
 
 ### Azure Databricks
 
 https://www.youtube.com/playlist?list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp
 
-___
+---
 
 # Udemy courses
 
-___
+---
 
 ### Taming Big Data with Apache Spark and Python - Hands On!
 
@@ -105,10 +102,6 @@ https://udemy.com/course/taming-big-data-with-apache-spark-hands-on/
 ### Azure Databricks & Spark Core For Data Engineers(Python/SQL)
 
 https://udemy.com/course/azure-databricks-spark-core-for-data-engineers/
-
-### Apache Spark 3 - Databricks Certified Associate Developer - Scala
-
-https://udemy.com/course/apache-spark-3-databricks-certified-associate-developer/
 
 ### Databricks Certified Associate Developer - Apache Spark 2022
 
@@ -132,9 +125,9 @@ https://www.udemy.com/course/cca-175-spark-and-hadoop-developer-python-pyspark/
 
 ---
 
-# Books
+# Apache Spark Books
 
-___
+---
 
 ### Learning Spark, 2nd Edition
 
@@ -144,46 +137,11 @@ https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/
 
 https://learning.oreilly.com/library/view/spark-the-definitive/9781491912201/
 
-### PySpark SQL Recipes: With HiveQL, Dataframe and Graphframes
-
-https://learning.oreilly.com/library/view/pyspark-sql-recipes/9781484243350/
-
-### Data Analysis with Python and PySpark
-
-https://learning.oreilly.com/library/view/data-analysis-with/9781617297205/
-
-### Essential PySpark for Scalable Data Analytics
-
-https://learning.oreilly.com/library/view/essential-pyspark-for/9781800568877/
-
-### Advanced Analytics with PySpark
-
-https://learning.oreilly.com/library/view/advanced-analytics-with/9781098103644/
-
-### Learn PySpark: Build Python-based Machine Learning and Deep Learning Models
-
-https://learning.oreilly.com/library/view/learn-pyspark-build/9781484249611/
-
-### Applied Data Science Using PySpark: Learn the End-to-End Predictive Model-Building Cycle
-
-https://learning.oreilly.com/library/view/applied-data-science/9781484265000/
-
-### Apache Spark Deep Learning Cookbook
-
-https://learning.oreilly.com/library/view/apache-spark-deep/9781788474221/
-
-### Modern Data Engineering with Apache Spark: A Hands-On Guide for Building Mission-Critical Streaming Applications
-
-https://learning.oreilly.com/library/view/modern-data-engineering/9781484274521/
-
-### Beginning Apache Spark 3: With DataFrame, Spark SQL, Structured Streaming, and Spark Machine Learning Library
-
-https://learning.oreilly.com/library/view/beginning-apache-spark/9781484273838/
-
 ---
 
 # Oreilly courses
-___
+
+---
 
 ### Apache Spark 3 for Data Engineering and Analytics with Python
 
@@ -205,7 +163,7 @@ https://learning.oreilly.com/videos/spark-programming-in/9781803246161/
 
 https://learning.oreilly.com/videos/pyspark-and-aws/9781803236698/
 
-___
+---
 
 # Hadoop
 
@@ -227,10 +185,11 @@ https://learning.oreilly.com/library/view/hadoop-the-definitive/9781491901687/
 
 https://learning.oreilly.com/library/view/expert-hadoop-r-administration/9780134598147/
 
-___
+---
 
 # Databricks
-___
+
+---
 
 ### Azure Databricks Cookbook
 
@@ -252,11 +211,11 @@ https://learning.oreilly.com/library/view/the-definitive-guide/9781484271827/
 
 https://learning.oreilly.com/library/view/beginning-apache-spark/9781484257814/
 
-___
+---
 
 # AWS - data science
 
-___
+---
 
 ### Data Science on AWS
 
@@ -269,6 +228,14 @@ https://learning.oreilly.com/library/view/aws-certified-data/9781119649472/
 ### AWS Certified Machine Learning Study Guide
 
 https://learning.oreilly.com/library/view/aws-certified-machine/9781119821007/
+
+
+
+___
+
+# AWS Microservice
+
+___
 
 ### Security and Microservice Architecture on AWS
 
