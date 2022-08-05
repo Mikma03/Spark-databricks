@@ -23,7 +23,6 @@
 - [Oreilly courses](#oreilly-courses)
     - [Apache Spark 3 for Data Engineering and Analytics with Python](#apache-spark-3-for-data-engineering-and-analytics-with-python)
     - [Apache Spark 3 Advance Skills for Cracking Job Interviews](#apache-spark-3-advance-skills-for-cracking-job-interviews)
-    - [Getting Started with Databricks: Tools for Understanding Massive Data Sets](#getting-started-with-databricks-tools-for-understanding-massive-data-sets)
     - [Spark Programming in Python for Beginners with Apache Spark 3](#spark-programming-in-python-for-beginners-with-apache-spark-3)
     - [PySpark and AWS: Master Big Data with PySpark and AWS](#pyspark-and-aws-master-big-data-with-pyspark-and-aws)
 - [Hadoop](#hadoop)
@@ -151,10 +150,6 @@ https://learning.oreilly.com/videos/apache-spark-3/9781803244303/
 
 https://subscription.packtpub.com/video/data/9781803241555/p1/video1_1/course-introduction
 
-### Getting Started with Databricks: Tools for Understanding Massive Data Sets
-
-https://learning.oreilly.com/videos/getting-started-with/9781484269190/
-
 ### Spark Programming in Python for Beginners with Apache Spark 3
 
 https://learning.oreilly.com/videos/spark-programming-in/9781803246161/
@@ -229,12 +224,9 @@ https://learning.oreilly.com/library/view/aws-certified-data/9781119649472/
 
 https://learning.oreilly.com/library/view/aws-certified-machine/9781119821007/
 
-
-
 ___
 
 # AWS Microservice
-
 ___
 
 ### Security and Microservice Architecture on AWS

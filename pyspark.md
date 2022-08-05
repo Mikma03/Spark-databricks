@@ -14,7 +14,6 @@
 
 <!-- /TOC -->
 
-
 # PySpark books
 
 ## Essential PySpark for Scalable Data Analytics
