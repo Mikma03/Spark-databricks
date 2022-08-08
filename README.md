@@ -20,6 +20,8 @@
 - [Apache Spark Books](#apache-spark-books)
     - [Learning Spark, 2nd Edition](#learning-spark-2nd-edition)
     - [Spark: The Definitive Guide](#spark-the-definitive-guide)
+    - [Spark in Action, Second Edition](#spark-in-action-second-edition)
+    - [Modern Data Engineering with Apache Spark: A Hands-On Guide for Building Mission-Critical Streaming Applications](#modern-data-engineering-with-apache-spark-a-hands-on-guide-for-building-mission-critical-streaming-applications)
 - [Oreilly courses](#oreilly-courses)
     - [Apache Spark 3 for Data Engineering and Analytics with Python](#apache-spark-3-for-data-engineering-and-analytics-with-python)
     - [Apache Spark 3 Advance Skills for Cracking Job Interviews](#apache-spark-3-advance-skills-for-cracking-job-interviews)
@@ -135,6 +137,14 @@ https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/
 ### Spark: The Definitive Guide
 
 https://learning.oreilly.com/library/view/spark-the-definitive/9781491912201/
+
+### Spark in Action, Second Edition
+
+https://learning.oreilly.com/library/view/spark-in-action/9781617295522/
+
+### Modern Data Engineering with Apache Spark: A Hands-On Guide for Building Mission-Critical Streaming Applications
+
+https://learning.oreilly.com/library/view/modern-data-engineering/9781484274521/
 
 ---
 
