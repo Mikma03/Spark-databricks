@@ -13,6 +13,12 @@
   - [Jobs & stages](#jobs--stages)
   - [Cluster management](#cluster-management)
 - [Work with DataFrames in Azure Databricks](#work-with-dataframes-in-azure-databricks)
+- [Describe lazy evaluation and other performance features in Azure Databricks](#describe-lazy-evaluation-and-other-performance-features-in-azure-databricks)
+- [Work with DataFrames columns in Azure Databricks](#work-with-dataframes-columns-in-azure-databricks)
+- [Work with DataFrames advanced methods in Azure Databricks](#work-with-dataframes-advanced-methods-in-azure-databricks)
+- [Describe platform architecture, security, and data protection in Azure Databricks](#describe-platform-architecture-security-and-data-protection-in-azure-databricks)
+- [Build and query a Delta Lake](#build-and-query-a-delta-lake)
+- [Process streaming data with Azure Databricks structured streaming](#process-streaming-data-with-azure-databricks-structured-streaming)
 
 <!-- /TOC -->
 
@@ -110,4 +116,72 @@ Use the `limit` function to display a small set of rows from a larger DataFrame
 Use `select()` to select a subset of columns from a DataFrame
 Use `distinct()` and dropDuplicates to remove duplicate data
 Use `drop()` to remove columns from a DataFrame
+
+# Describe lazy evaluation and other performance features in Azure Databricks
+
+Among the most powerful components of Spark are Spark SQL. At its core lies the Catalyst optimizer. This extensible query optimizer supports both rule-based and cost-based optimization.
+
+When you execute code, Spark SQL uses Catalyst's general tree transformation framework in four phases, as shown below: (1) analyzing a logical plan to resolve references, (2) logical plan optimization, (3) physical planning, and (4) code generation to compile parts of the query to Java bytecode. In the physical planning phase, Catalyst may generate multiple plans and compare them based on cost. All other phases are purely rule-based.
+
+![imgnn](img/catalyst-diagram.png)
+
+# Work with DataFrames columns in Azure Databricks
+
+Exercises based part
+
+# Work with DataFrames advanced methods in Azure Databricks
+
+Exercises based part
+
+Azure Databricks is a fully-managed, cloud-based Big Data and Machine Learning platform, which empowers developers to accelerate AI and innovation by simplifying the process of building enterprise-grade production data applications. Built as a joint effort by Databricks and Microsoft, Azure Databricks provides data science and engineering teams with a single platform for Big Data processing and Machine Learning.
+
+# Describe platform architecture, security, and data protection in Azure Databricks
+
+By combining the power of Databricks, an end-to-end, managed Apache Spark platform optimized for the cloud, with the enterprise scale and security of Microsoft's Azure platform, Azure Databricks makes it simple to run large-scale Spark workloads.
+
+![img3x](img/azure-databricks%20ds%20de.png)
+
+Microsoft is working to integrate Azure Databricks closely with all features of the Azure platform. Below is a list of some of the integrations completed so far:
+
+- VM types: Many existing VMs can be used for clusters, including F-series for machine learning scenarios, M-series for massive memory scenarios, and D-series for general purpose.
+
+- Security and Privacy: Ownership and control of data is with the customer, and Microsoft aims for Azure Databricks to adhere to all the compliance certifications that the rest of Azure provides.
+- Flexibility in network topology: Azure Databricks supports deployments into virtual networks (VNETs), which can control which sources and sinks can be accessed and how they are accessed.
+- Orchestration: ETL/ELT workflows (including analytics workloads in Azure Databricks) can be operationalized using Azure Data Factory pipelines.
+- Power BI: Power BI can be connected directly to Databricks clusters using JDBC in order to query data interactively at massive scale using familiar tools.
+- Azure Active Directory: Azure Databricks workspaces deploy into customer subscriptions, so naturally Azure AD can be used to control access to sources, results, and jobs.
+- Data stores: Azure Storage and Data Lake Store services are exposed to Databricks users via Databricks File System (DBFS) to provide caching and optimized analysis over existing data. Azure D- atabricks easily and efficiently uploads results into Azure Synapse Analytics, Azure SQL Database, and Azure Cosmos DB for further analysis and real-time serving, making it simple to build end-to-end data architectures on Azure.
+- Real-time analytics: Integration with IoT Hub, Azure Event Hubs, and Azure HDInsight Kafka clusters enables developers to build scalable streaming solutions for real-time analytics.
+
+**VNet Peering**
+
+Virtual network (VNet) peering allows the virtual network in which your Azure Databricks resource is running to peer with another Azure virtual network. Traffic between virtual machines in the peered virtual networks is routed through the Microsoft backbone infrastructure, much like traffic is routed between virtual machines in the same virtual network, through private IP addresses only.
+
+# Build and query a Delta Lake
+
+Delta Lake is a transactional storage layer designed specifically to work with Apache Spark and Databricks File System (DBFS). At the core of Delta Lake is an optimized Spark table. It stores your data as Apache Parquet files in DBFS and maintains a transaction log that efficiently tracks changes to the table.
+
+Delta Lake is an open-source storage layer that brings ACID transactions to Apache Spark™ and big data workloads.
+
+![imgm](img/delta-lake-diagram.png)
+
+You can read and write data that's stored in Delta Lake by using Apache Spark SQL batch and streaming APIs. These are the same familiar APIs that you use to work with Hive tables or DBFS directories. Delta Lake provides the following functionality:
+
+ACID Transactions: Data lakes typically have multiple data pipelines reading and writing data concurrently, and data engineers have to go through a tedious process to ensure data integrity, due to the lack of transactions. Delta Lake brings ACID transactions to your data lakes. It provides serializability, the strongest level of isolation level.
+
+Scalable Metadata Handling: In big data, even the metadata itself can be "big data". Delta Lake treats metadata just like data, leveraging Spark's distributed processing power to handle all its metadata. As a result, Delta Lake can handle petabyte-scale tables with billions of partitions and files at ease.
+
+Time Travel (data versioning): Delta Lake provides snapshots of data enabling developers to access and revert to earlier versions of data for audits, rollbacks or to reproduce experiments.
+
+Open Format: All data in Delta Lake is stored in Apache Parquet format enabling Delta Lake to leverage the efficient compression and encoding schemes that are native to Parquet.
+
+Unified Batch and Streaming Source and Sink: A table in Delta Lake is both a batch table, as well as a streaming source and sink. Streaming data ingest, batch historic backfill, and interactive queries all just work out of the box.
+
+Schema Enforcement: Delta Lake provides the ability to specify your schema and enforce it. This helps ensure that the data types are correct and required columns are present, preventing bad data from causing data corruption.
+
+Schema Evolution: Big data is continuously changing. Delta Lake enables you to make changes to a table schema that can be applied automatically, without the need for cumbersome DDL.
+
+100% Compatible with Apache Spark API: Developers can use Delta Lake with their existing data pipelines with minimal change as it is fully compatible with Spark, the commonly used big data processing engine.
+
+# Process streaming data with Azure Databricks structured streaming
 

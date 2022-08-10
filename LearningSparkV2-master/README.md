@@ -9,3 +9,9 @@ don't have to prefix `SPARK_HOME/bin/spark-submit` for these standalone applicat
 For all the other chapters, we have provided notebooks in the [notebooks](notebooks) folder. We have also included notebook equivalents for a few of the stand-alone Spark applications in the aforementioned chapters.
 
 Have Fun, Cheers!
+
+start
+
+https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch06.html#:-:text=Working%20with%20Datasets
+
+
