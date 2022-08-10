@@ -23,6 +23,13 @@
 - [Work with dataframes - write / read | data types and sources](#work-with-dataframes---write--read--data-types-and-sources)
 - [Connectors for Spark SQL and common finction for SQL and Dataframe](#connectors-for-spark-sql-and-common-finction-for-sql-and-dataframe)
 - [Connecting to and from Databricks](#connecting-to-and-from-databricks)
+- [Databricks for Python developers](#databricks-for-python-developers)
+  - [Introduction to DataFrames - Python](#introduction-to-dataframes---python)
+  - [Delta Lake quickstart](#delta-lake-quickstart)
+    - [Delta Lake’s Python documentation page](#delta-lakes-python-documentation-page)
+  - [Delta Live Tables quickstart](#delta-live-tables-quickstart)
+  - [Pandas API on Spark](#pandas-api-on-spark)
+- [Connect many popular third-party IDEs to a Databricks](#connect-many-popular-third-party-ides-to-a-databricks)
 
 <!-- /TOC -->
 
@@ -107,4 +114,34 @@ https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch05.
 # Connecting to and from Databricks
 
 https://learning.oreilly.com/library/view/beginning-apache-spark/9781484257814/html/488676_1_En_9_Chapter.xhtml#:-:text=Connecting%20to%20and%20from%20Databricks,Robert%C2%A0Ilijason1%C2%A0
+
+# Databricks for Python developers
+
+https://docs.databricks.com/languages/python.html
+
+## Introduction to DataFrames - Python
+
+https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html
+
+## Delta Lake quickstart
+
+https://docs.databricks.com/delta/quick-start.html
+
+### Delta Lake’s Python documentation page
+
+https://docs.delta.io/latest/api/python/index.html
+
+## Delta Live Tables quickstart
+
+https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-quickstart.html
+
+## Pandas API on Spark
+
+https://docs.databricks.com/languages/pandas-spark.html
+
+https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/index.html
+
+# Connect many popular third-party IDEs to a Databricks
+
+https://docs.databricks.com/dev-tools/index.html#use-an-ide
 
