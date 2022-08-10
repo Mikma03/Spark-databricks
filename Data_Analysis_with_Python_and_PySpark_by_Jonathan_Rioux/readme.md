@@ -23,6 +23,7 @@
     - [Exercise 2.2](#exercise-22)
       - [Solution](#solution)
 - [Chapter 3 Submitting and scaling your first PySpark program](#chapter-3-submitting-and-scaling-your-first-pyspark-program)
+  - [Ordering the results on the screen using orderBy](#ordering-the-results-on-the-screen-using-orderby)
 
 <!-- /TOC -->
 
@@ -298,3 +299,96 @@ Using a list comprehension (see appendix C), we can iterate over each dtypes of 
     # => 1
 
 # Chapter 3 Submitting and scaling your first PySpark program
+
+The easiest way to count record occurrence is to use the `groupby()` method, passing the columns we wish to group as a parameter. The `groupby()` method in listing 3.1 returns a `GroupedData` and awaits further instructions. Once we apply the `count()` method, we get back a data frame containing the grouping column word, as well as the count column containing the number of occurrences for each word.
+
+![img](DataAnalysisWithPythonAndPySpark-trunk/img/03.png)
+
+Counting word frequencies using `groupby()` and `count()`
+
+    groups = words_nonull.groupby(col("word"))
+    
+    print(groups)
+    
+    # <pyspark.sql.group.GroupedData at 0x10ed23da0>
+    
+    results = words_nonull.groupby(col("word")).count()
+    
+    print(results)
+    
+    # DataFrame[word: string, count: bigint]
+    
+    results.show()
+    
+    # +-------------+-----+
+    # |         word|count|
+    # +-------------+-----+
+    # |       online|    4|
+    # |         some|  203|
+    # |        still|   72|
+    # |          few|   72|
+    # |         hope|  122|
+    # [...]
+    # |       doubts|    2|
+    # |    destitute|    1|
+    # |    solemnity|    5|
+    # |gratification|    1|
+    # |    connected|   14|
+    # +-------------+-----+
+    # only showing top 20 rows
+
+
+Starting with the word_nonull seen in this section, which of the following expressions would return the number of words per letter count (e.g., there are X one-letter words, Y two-letter words, etc.)?
+
+Assume that pyspark.sql.functions.col, pyspark.sql.functions.length are imported.
+
+
+    from pyspark.sql.functions import col, length
+    
+    words_nonull.select(length(col("word")).alias("length")).groupby(
+        "length"
+    ).count().show(5)
+    
+    # +------+-----+
+    # |length|count|
+    # +------+-----+
+    # |    12|  815|
+    # |     1| 3750|
+    # |    13|  399|
+    # |     6| 9121|
+    # |    16|    5|
+    # +------+-----+
+    # only showing top 5 rows
+
+## Ordering the results on the screen using orderBy
+
+Just like we use `groupby()` to group a data frame by the values in one or many columns, we use `orderBy()` to order a data frame by the values of one or many columns. PySpark provides two different syntaxes to order records:
+
+We can provide the column names as parameters, with an optional ascending parameter. By default, we order a data frame in `ascending` order; by setting ascending to false, we reverse the order, getting the largest values first.
+
+Or we can use the `Column` object directly, via the `col` function. When we want to reverse the ordering, we use the `desc()` method on the column.
+
+Displaying the top 10 words in Jane Austen’s Pride and Prejudice
+
+    results.orderBy("count", ascending=False).show(10)
+    results.orderBy(col("count").desc()).show(10)
+    
+    # +----+-----+
+    # |word|count|
+    # +----+-----+
+    # | the| 4480|
+    # |  to| 4218|
+    # |  of| 3711|
+    # | and| 3504|
+    # | her| 2199|
+    # |   a| 1982|
+    # |  in| 1909|
+    # | was| 1838|
+    # |   i| 1749|
+    # | she| 1668|
+    # +----+-----+
+    # only showing top 10 rows
+
+start:
+https://learning.oreilly.com/library/view/data-analysis-with/9781617297205/OEBPS/Text/03.htm#heading_id_4
+

@@ -46,6 +46,8 @@
   - [Querying with the Spark SQL Shell, Beeline, and Tableau](#querying-with-the-spark-sql-shell-beeline-and-tableau)
   - [External Data Sources](#external-data-sources)
 - [Spark SQL and Datasets](#spark-sql-and-datasets)
+  - [Spark’s Internal Format Versus Java Object Format](#sparks-internal-format-versus-java-object-format)
+- [Optimizing and Tuning Spark Applications](#optimizing-and-tuning-spark-applications)
 
 <!-- /TOC -->
 
@@ -709,3 +711,20 @@ Spark SQL includes a data source API that can read data from other databases usi
 # Spark SQL and Datasets
 
 
+Spark is an intensive in-memory distributed big data engine, so its efficient use of memory is crucial to its execution speed.1 Throughout its release history, Spark’s usage of memory has significantly evolved:
+
+- Spark 1.0 used RDD-based Java objects for memory storage, serialization, and deserialization, which was expensive in terms of resources and slow. Also, storage was allocated on the Java heap, so you were at the mercy of the JVM’s garbage collection (GC) for large data sets.
+
+- Spark 1.x introduced Project Tungsten. One of its prominent features was a new internal row-based format to lay out Datasets and DataFrames in off-heap memory, using offsets and pointers. Spark uses an efficient mechanism called encoders to serialize and deserialize between the JVM and its internal Tungsten format. Allocating memory off-heap means that Spark is less encumbered by GC.
+
+- Spark 2.x introduced the second-generation Tungsten engine, featuring whole-stage code generation and vectorized column-based memory layout. Built on ideas and techniques from modern compilers, this new version also capitalized on modern CPU and cache architectures for fast parallel data access with the “single instruction, multiple data” (SIMD) approach.
+
+## Spark’s Internal Format Versus Java Object Format
+
+Java objects have large overheads—header info, hashcode, Unicode info, etc. Even a simple Java string such as “abcd” takes 48 bytes of storage, instead of the 4 bytes you might expect. Imagine the overhead to create, for example, a MyClass(Int, String, String) object.
+
+Instead of creating JVM-based objects for Datasets or DataFrames, Spark allocates off-heap Java memory to lay out their data and employs encoders to convert the data from in-memory representation to JVM object. For example, Figure 6-1 shows how the JVM object MyClass(Int, String, String) would be stored internally.
+
+![img](../img/lesp_0601.png)
+
+# Optimizing and Tuning Spark Applications
