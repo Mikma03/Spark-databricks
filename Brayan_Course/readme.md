@@ -5,6 +5,9 @@
 - GitHub repo
   - https://github.com/bcafferky/shared/tree/master/MasterDatabricksAndSpark
 
+- YouTube playlist
+  - https://www.youtube.com/playlist?list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp
+
 # Lesson by subject
 
 
@@ -44,3 +47,20 @@
 
 - https://www.youtube.com/watch?v=C_LznP-WG28&list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp&index=26
 
+## Lesson 26 - PySpark: Intro to the New pandas UDFs
+
+- https://www.youtube.com/watch?v=1BVTuMIGl-k&list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp&index=28
+
+## Lesson 27 - PySpark: Coding pandas UDFs
+
+- https://www.youtube.com/watch?v=H00Y9JTcFio&list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp&index=29
+
+##  Lesson 28 - PySpark: Coding pandas Scalar UDFs
+
+- https://www.youtube.com/watch?v=JUObqnrChc8&list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp&index=30
+
+## Lesson 29 - PySpark: Coding pandas Function API
+
+- https://www.youtube.com/watch?v=I92rk5OgpmI&list=PL7_h0bRfL52qWoCcS18nXcT1s-5rSa1yp&index=31
+
+## 
