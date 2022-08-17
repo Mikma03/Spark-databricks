@@ -30,6 +30,7 @@
   - [Delta Live Tables quickstart](#delta-live-tables-quickstart)
   - [Pandas API on Spark](#pandas-api-on-spark)
 - [Connect many popular third-party IDEs to a Databricks](#connect-many-popular-third-party-ides-to-a-databricks)
+- [Orchestrate data processing workflows on Databricks](#orchestrate-data-processing-workflows-on-databricks)
 
 <!-- /TOC -->
 
@@ -145,3 +146,6 @@ https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/index
 
 https://docs.databricks.com/dev-tools/index.html#use-an-ide
 
+# Orchestrate data processing workflows on Databricks
+
+https://docs.databricks.com/workflows/index.html

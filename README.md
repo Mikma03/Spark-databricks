@@ -1,9 +1,12 @@
 <!-- TOC -->
 
 - [Microsoft dedicated paths](#microsoft-dedicated-paths)
+    - [Define resources with Bicep, ARM templates, and Terraform AzAPI provider](#define-resources-with-bicep-arm-templates-and-terraform-azapi-provider)
     - [Microsoft path for Databricks - Data Engineering](#microsoft-path-for-databricks---data-engineering)
     - [Microsoft path for Databricks - Machine Learning](#microsoft-path-for-databricks---machine-learning)
     - [Microsoft path for Databricks - Data Science](#microsoft-path-for-databricks---data-science)
+  - [Microsoft docs](#microsoft-docs)
+    - [Databricks Data Science & Engineering workspace documentation](#databricks-data-science--engineering-workspace-documentation)
 - [Databricks Academy](#databricks-academy)
     - [Databricks path for certification - Spark Developer](#databricks-path-for-certification---spark-developer)
     - [Data Engineer Learning Plan](#data-engineer-learning-plan)
@@ -54,6 +57,10 @@
 
 ---
 
+### Define resources with Bicep, ARM templates, and Terraform AzAPI provider
+
+https://docs.microsoft.com/en-us/azure/templates/
+
 ### Microsoft path for Databricks - Data Engineering
 
 https://docs.microsoft.com/en-us/learn/paths/data-engineer-azure-databricks/
@@ -65,6 +72,12 @@ https://docs.microsoft.com/en-us/learn/paths/build-operate-machine-learning-solu
 ### Microsoft path for Databricks - Data Science
 
 https://docs.microsoft.com/en-ie/learn/paths/perform-data-science-azure-databricks/?WT.mc_id=AI-MVP-5004069
+
+## Microsoft docs
+
+### Databricks Data Science & Engineering workspace documentation
+
+https://docs.microsoft.com/en-us/azure/databricks/scenarios/workspace/
 
 ---
 

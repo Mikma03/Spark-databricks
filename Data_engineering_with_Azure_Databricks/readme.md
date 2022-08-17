@@ -28,7 +28,7 @@ Learn how to harness the power of Apache Spark and powerful clusters running on 
 
 This learning path helps prepare you for Exam DP-203: Data Engineering on Microsoft Azure.
 
-- https://docs.microsoft.com/en-us/certifications/exams/dp-203
+- https://docs.microsoft.com/en-us/learn/paths/data-engineer-azure-databricks/
 
 ## Link to GitHub repo:
 
