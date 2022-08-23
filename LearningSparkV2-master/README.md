@@ -12,6 +12,6 @@ Have Fun, Cheers!
 
 start
 
-https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch06.html#:-:text=Working%20with%20Datasets
+https://learning.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch07.html#:-:text=Chapter%207.%20Optimizing%20and%20Tuning%20Spark%20Applications
 
 
