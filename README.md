@@ -408,3 +408,25 @@ https://docs.databricks.com/dev-tools/index.html#use-an-ide
 # Orchestrate data processing workflows on Databricks
 
 https://docs.databricks.com/workflows/index.html
+
+
+# Pandas books
+
+## Python for Data Analysis, 3rd Edition
+
+https://learning.oreilly.com/library/view/python-for-data/9781098104023/
+
+## Pandas in Action
+
+https://learning.oreilly.com/library/view/pandas-in-action/9781617297434/
+
+## Pandas 1.x Cookbook
+
+https://learning.oreilly.com/library/view/pandas-1-x-cookbook/9781839213106/
+
+
+# Video courses - Pandas
+
+## Data Analysis with Pandas and Python
+
+https://learning.oreilly.com/videos/data-analysis-with/9781788622394/

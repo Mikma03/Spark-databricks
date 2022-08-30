@@ -24,6 +24,11 @@
       - [Solution](#solution)
 - [Chapter 3 Submitting and scaling your first PySpark program](#chapter-3-submitting-and-scaling-your-first-pyspark-program)
   - [Ordering the results on the screen using orderBy](#ordering-the-results-on-the-screen-using-orderby)
+  - [Writing data from a data frame](#writing-data-from-a-data-frame)
+  - [Putting it all together: Counting](#putting-it-all-together-counting)
+    - [Simplifying our PySpark functions import](#simplifying-our-pyspark-functions-import)
+    - [Removing intermediate variables by chaining transformation methods](#removing-intermediate-variables-by-chaining-transformation-methods)
+  - [Summary](#summary)
 
 <!-- /TOC -->
 
@@ -364,9 +369,9 @@ Assume that pyspark.sql.functions.col, pyspark.sql.functions.length are imported
 
 Just like we use `groupby()` to group a data frame by the values in one or many columns, we use `orderBy()` to order a data frame by the values of one or many columns. PySpark provides two different syntaxes to order records:
 
-We can provide the column names as parameters, with an optional ascending parameter. By default, we order a data frame in `ascending` order; by setting ascending to false, we reverse the order, getting the largest values first.
+- We can provide the column names as parameters, with an optional ascending parameter. By default, we order a data frame in `ascending` order; by setting ascending to false, we reverse the order, getting the largest values first.
 
-Or we can use the `Column` object directly, via the `col` function. When we want to reverse the ordering, we use the `desc()` method on the column.
+- Or we can use the `Column` object directly, via the `col` function. When we want to reverse the ordering, we use the `desc()` method on the column.
 
 Displaying the top 10 words in Jane Austen’s Pride and Prejudice
 
@@ -393,4 +398,106 @@ start:
 
 https://learning.oreilly.com/library/view/data-analysis-with/9781617297205/OEBPS/Text/03.htm#heading_id_4
 
+## Writing data from a data frame
 
+By default, PySpark will give you one file per partition. This means that our program, as run on my machine, yields 200 partitions at the end. This isn’t the best for portability. To reduce the number of partitions, we apply the `coalesce()` method with the desired number of partitions.
+
+## Putting it all together: Counting
+
+Interactive development is fantastic for the rapid iteration of our code. When developing programs, it’s great to experiment and validate our thoughts through rapid code inputs to a shell.
+
+
+```from pyspark.sql import SparkSession
+from pyspark.sql.functions import (
+    col,
+    explode,
+    lower,
+    regexp_extract,
+    split,
+)
+ 
+spark = SparkSession.builder.appName(
+    "Analyzing the vocabulary of Pride and Prejudice."
+).getOrCreate()
+ 
+book = spark.read.text("./data/gutenberg_books/1342-0.txt")
+ 
+lines = book.select(split(book.value, " ").alias("line"))
+ 
+words = lines.select(explode(col("line")).alias("word"))
+ 
+words_lower = words.select(lower(col("word")).alias("word"))
+ 
+words_clean = words_lower.select(
+    regexp_extract(col("word"), "[a-z']*", 0).alias("word")
+)
+ 
+words_nonull = words_clean.where(col("word") != "")
+ 
+results = words_nonull.groupby(col("word")).count()
+ 
+results.orderBy("count", ascending=False).show(10)
+ 
+results.coalesce(1).write.csv("./simple_count_single_partition.csv")
+```
+
+
+### Simplifying our PySpark functions import
+
+```
+# Before
+from pyspark.sql.functions import col, explode, lower, regexp_extract, split
+ 
+# After
+import pyspark.sql.functions as F
+```
+
+### Removing intermediate variables by chaining transformation methods
+
+```
+# Before
+book = spark.read.text("./data/gutenberg_books/1342-0.txt")
+ 
+lines = book.select(split(book.value, " ").alias("line"))
+ 
+words = lines.select(explode(col("line")).alias("word"))
+ 
+words_lower = words.select(lower(col("word")).alias("word"))
+ 
+words_clean = words_lower.select(
+    regexp_extract(col("word"), "[a-z']*", 0).alias("word")
+)
+ 
+words_nonull = words_clean.where(col("word") != "")
+ 
+results = words_nonull.groupby("word").count()
+ 
+# After
+import pyspark.sql.functions as F
+ 
+results = (
+    spark.read.text("./data/gutenberg_books/1342-0.txt")
+    .select(F.split(F.col("value"), " ").alias("line"))
+    .select(F.explode(F.col("line")).alias("word"))
+    .select(F.lower(F.col("word")).alias("word"))
+    .select(F.regexp_extract(F.col("word"), "[a-z']*", 0).alias("word"))
+    .where(F.col("word") != "")
+    .groupby("word")
+    .count()
+)
+```
+
+![img7](/Data_Analysis_with_Python_and_PySpark_by_Jonathan_Rioux/DataAnalysisWithPythonAndPySpark-trunk/img/03-03.png)
+
+
+## Summary
+
+You can group records using the groupby method, passing the column names you want to group against as a parameter. This returns a GroupedData object that waits for an aggregation method to return the results of computation over the groups, such as the count() of records.
+
+PySpark’s repertoire of functions that operates on columns is located in pyspark.sql.functions. The unofficial but well-respected convention is to qualify this import in your program using the F keyword.
+
+When writing a data frame to a file, PySpark will create a directory and put one file per partition. If you want to write a single file, use the coaslesce(1) method.
+
+To prepare your program to work in batch mode via spark-submit, you need to create a SparkSession. PySpark provides a builder pattern in the pyspark.sql module.
+
+If your program needs to scale across multiple files within the same directory, you can use a glob pattern to select many files at once. PySpark will collect them in a single data frame.
