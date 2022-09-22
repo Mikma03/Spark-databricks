@@ -66,6 +66,7 @@
 - [PySpark Documentation](#pyspark-documentation)
   - [PySpark - General docs](#pyspark---general-docs)
   - [PySpark - DataFrame and Dataset](#pyspark---dataframe-and-dataset)
+  - [Pandas API on Spark](#pandas-api-on-spark)
 - [Spark by examples](#spark-by-examples)
 - [Mastering Pyspark - docs and examples](#mastering-pyspark---docs-and-examples)
 - [Work with dataframes - write / read | data types and sources](#work-with-dataframes---write--read--data-types-and-sources)
@@ -76,9 +77,15 @@
   - [Delta Lake quickstart](#delta-lake-quickstart)
     - [Delta Lake’s Python documentation page](#delta-lakes-python-documentation-page)
   - [Delta Live Tables quickstart](#delta-live-tables-quickstart)
-  - [Pandas API on Spark](#pandas-api-on-spark)
+  - [Pandas API on Spark](#pandas-api-on-spark-1)
 - [Connect many popular third-party IDEs to a Databricks](#connect-many-popular-third-party-ides-to-a-databricks)
 - [Orchestrate data processing workflows on Databricks](#orchestrate-data-processing-workflows-on-databricks)
+- [Pandas books](#pandas-books)
+  - [Python for Data Analysis, 3rd Edition](#python-for-data-analysis-3rd-edition)
+  - [Pandas in Action](#pandas-in-action)
+  - [Pandas 1.x Cookbook](#pandas-1x-cookbook)
+- [Video courses - Pandas](#video-courses---pandas)
+  - [Data Analysis with Pandas and Python](#data-analysis-with-pandas-and-python)
 
 <!-- /TOC -->
 
@@ -354,6 +361,10 @@ https://spark.apache.org/docs/latest/api/python/index.html
 ## PySpark - DataFrame and Dataset
 
 https://spark.apache.org/docs/latest/sql-programming-guide.html
+
+## Pandas API on Spark
+
+https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/index.html
 
 # Spark by examples
 
