@@ -1,0 +1,14 @@
+- Spark performance tuning
+- shuffle spark / core spark architecture
+- memory management
+- brodcast spark
+- spark casching
+- function for imporoving Spark
+- joins in Spark
+- Glue sdk
+- Table schema verions aws
+- avro and parquet
+- Datasets vs dataframe Spark
+- pushdown - spark
+- normal form - tabele - bazy danych and denormalization
+- Redshift
