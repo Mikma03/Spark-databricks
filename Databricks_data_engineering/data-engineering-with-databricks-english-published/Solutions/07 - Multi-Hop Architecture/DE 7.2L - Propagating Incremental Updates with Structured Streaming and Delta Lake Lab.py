@@ -70,7 +70,12 @@ DA.block_until_stream_is_ready(query)
 # COMMAND ----------
 
 assert spark.table("bronze"), "Table named `bronze` does not exist"
-assert spark.sql(f"SHOW TABLES").filter(f"tableName == 'bronze'").first()["isTemporary"] == False, "Table is temporary"
+assert (
+    spark.sql("SHOW TABLES")
+    .filter("tableName == 'bronze'")
+    .first()["isTemporary"]
+    == False
+), "Table is temporary"
 assert spark.table("bronze").dtypes ==  [('customer_id', 'string'), ('tax_id', 'string'), ('tax_code', 'string'), ('customer_name', 'string'), ('state', 'string'), ('city', 'string'), ('postcode', 'string'), ('street', 'string'), ('number', 'string'), ('unit', 'string'), ('region', 'string'), ('district', 'string'), ('lon', 'string'), ('lat', 'string'), ('ship_to_address', 'string'), ('valid_from', 'string'), ('valid_to', 'string'), ('units_purchased', 'string'), ('loyalty_segment', 'string'), ('_rescued_data', 'string')], "Incorrect Schema"
 
 # COMMAND ----------
@@ -119,7 +124,12 @@ assert spark.table("bronze").dtypes ==  [('customer_id', 'string'), ('tax_id', '
 # COMMAND ----------
 
 assert spark.table("bronze_enhanced_temp"), "Table named `bronze_enhanced_temp` does not exist"
-assert spark.sql(f"SHOW TABLES").filter(f"tableName == 'bronze_enhanced_temp'").first()["isTemporary"] == True, "Table is not temporary"
+assert (
+    spark.sql("SHOW TABLES")
+    .filter("tableName == 'bronze_enhanced_temp'")
+    .first()["isTemporary"]
+    == True
+), "Table is not temporary"
 assert spark.table("bronze_enhanced_temp").dtypes ==  [('customer_id', 'string'), ('tax_id', 'string'), ('tax_code', 'string'), ('customer_name', 'string'), ('state', 'string'), ('city', 'string'), ('postcode', 'string'), ('street', 'string'), ('number', 'string'), ('unit', 'string'), ('region', 'string'), ('district', 'string'), ('lon', 'string'), ('lat', 'string'), ('ship_to_address', 'string'), ('valid_from', 'string'), ('valid_to', 'string'), ('units_purchased', 'string'), ('loyalty_segment', 'string'), ('_rescued_data', 'string'), ('receipt_time', 'timestamp'), ('source_file', 'string')], "Incorrect Schema"
 assert spark.table("bronze_enhanced_temp").isStreaming, "Not a streaming table"
 
@@ -157,7 +167,12 @@ DA.block_until_stream_is_ready(query)
 # COMMAND ----------
 
 assert spark.table("silver"), "Table named `silver` does not exist"
-assert spark.sql(f"SHOW TABLES").filter(f"tableName == 'silver'").first()["isTemporary"] == False, "Table is temporary"
+assert (
+    spark.sql("SHOW TABLES")
+    .filter("tableName == 'silver'")
+    .first()["isTemporary"]
+    == False
+), "Table is temporary"
 assert spark.table("silver").dtypes ==  [('customer_id', 'string'), ('tax_id', 'string'), ('tax_code', 'string'), ('customer_name', 'string'), ('state', 'string'), ('city', 'string'), ('postcode', 'string'), ('street', 'string'), ('number', 'string'), ('unit', 'string'), ('region', 'string'), ('district', 'string'), ('lon', 'string'), ('lat', 'string'), ('ship_to_address', 'string'), ('valid_from', 'string'), ('valid_to', 'string'), ('units_purchased', 'string'), ('loyalty_segment', 'string'), ('_rescued_data', 'string'), ('receipt_time', 'timestamp'), ('source_file', 'string')], "Incorrect Schema"
 assert spark.table("silver").filter("postcode <= 0").count() == 0, "Null postcodes present"
 
@@ -205,7 +220,12 @@ assert spark.table("silver").filter("postcode <= 0").count() == 0, "Null postcod
 # COMMAND ----------
 
 assert spark.table("customer_count_temp"), "Table named `customer_count_temp` does not exist"
-assert spark.sql(f"SHOW TABLES").filter(f"tableName == 'customer_count_temp'").first()["isTemporary"] == True, "Table is not temporary"
+assert (
+    spark.sql("SHOW TABLES")
+    .filter("tableName == 'customer_count_temp'")
+    .first()["isTemporary"]
+    == True
+), "Table is not temporary"
 assert spark.table("customer_count_temp").dtypes ==  [('state', 'string'), ('customer_count', 'bigint')], "Incorrect Schema"
 
 # COMMAND ----------
@@ -240,7 +260,12 @@ DA.block_until_stream_is_ready(query)
 # COMMAND ----------
 
 assert spark.table("gold_customer_count_by_state"), "Table named `gold_customer_count_by_state` does not exist"
-assert spark.sql(f"show tables").filter(f"tableName == 'gold_customer_count_by_state'").first()["isTemporary"] == False, "Table is temporary"
+assert (
+    spark.sql("show tables")
+    .filter("tableName == 'gold_customer_count_by_state'")
+    .first()["isTemporary"]
+    == False
+), "Table is temporary"
 assert spark.table("gold_customer_count_by_state").dtypes ==  [('state', 'string'), ('customer_count', 'bigint')], "Incorrect Schema"
 assert spark.table("gold_customer_count_by_state").count() == 51, "Incorrect number of rows" 
 

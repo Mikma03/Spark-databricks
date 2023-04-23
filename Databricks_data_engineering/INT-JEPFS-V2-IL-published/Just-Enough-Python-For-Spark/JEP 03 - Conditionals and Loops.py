@@ -85,7 +85,7 @@ print(breakfast_list)                            # Print the entire list
 
 for food in breakfast_list:
   print(food)
-  
+
 print("This is executed once because it is outside the for loop")
 
 # COMMAND ----------
@@ -96,7 +96,7 @@ print("This is executed once because it is outside the for loop")
 
 # COMMAND ----------
 
-for i in range(0, 5):
+for i in range(5):
   print(i)
 
 # COMMAND ----------
@@ -130,7 +130,7 @@ food = "bacon"
 
 if food == "eggs":
   print("Make scrambled eggs")
-  
+
 print("All done")
 
 # COMMAND ----------
@@ -151,7 +151,7 @@ if food == "eggs":
   print("Make scrambled eggs")
 else:
   print(f"I don't know what to do with {food}")
-  
+
 print("All done")
 
 # COMMAND ----------
@@ -168,7 +168,7 @@ elif food == "waffles":
   print("I need syrup for my waffles")
 else:
   print(f"I don't know what to do with {food}")
-  
+
 print("All done")
 
 # COMMAND ----------
@@ -186,11 +186,11 @@ food = "bacon"
 
 if food == "eggs":
   print("Make scrambled eggs")
-elif food == "waffles" or food == "pancakes":
+elif food in {"waffles", "pancakes"}:
   print(f"I need syrup for my {food}")
 else:
   print(f"I don't know what to do with {food}")
-  
+
 print("All done")
 
 # COMMAND ----------
@@ -202,14 +202,13 @@ print("All done")
 
 food = "bacon"
 
-if food != "eggs":
-  if food == "waffles" or food == "pancakes":
-    print(f"I need syrup for my {food}")
-  else:
-    print(f"I don't know what to do with {food}")
-else:
+if food == "eggs":
   print("Make scrambled eggs")
-  
+
+elif food in {"waffles", "pancakes"}:
+  print(f"I need syrup for my {food}")
+else:
+  print(f"I don't know what to do with {food}")
 print("All done")
 
 # COMMAND ----------
@@ -233,14 +232,13 @@ for food in breakfast_list:
 # COMMAND ----------
 
 for food in breakfast_list:
-  if food != "eggs":
-    if food == "waffles" or food == "pancakes":
-      print(f"I need syrup for my {food}")
-    else:
-      print(f"I don't know what to do with {food}")
-  else:
+  if food == "eggs":
     print("Make scrambled eggs")
-  
+
+  elif food in ["waffles", "pancakes"]:
+    print(f"I need syrup for my {food}")
+  else:
+    print(f"I don't know what to do with {food}")
 print("All done")
 
 # COMMAND ----------

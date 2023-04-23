@@ -69,51 +69,61 @@ DBAcademyHelper.monkey_patch(create_pipeline)
 def validate_pipeline_config(self):
     "Provided by DBAcademy, this function validates the configuration of the pipeline"
     import json
-    
+
     pipeline_name, path = self.get_pipeline_config()
 
     pipeline = self.client.pipelines().get_by_name(pipeline_name)
     assert pipeline is not None, f"The pipline named \"{pipeline_name}\" doesn't exist. Double check the spelling."
 
     spec = pipeline.get("spec")
-    
+
     storage = spec.get("storage")
     assert storage == DA.paths.storage_location, f"Invalid storage location. Found \"{storage}\", expected \"{DA.paths.storage_location}\" "
-    
+
     target = spec.get("target")
     assert target == DA.db_name, f"Invalid target. Found \"{target}\", expected \"{DA.db_name}\" "
-    
+
     libraries = spec.get("libraries")
-    assert libraries is None or len(libraries) > 0, f"The notebook path must be specified."
-    assert len(libraries) == 1, f"More than one library (e.g. notebook) was specified."
+    assert (
+        libraries is None or len(libraries) > 0
+    ), "The notebook path must be specified."
+    assert (
+        len(libraries) == 1
+    ), "More than one library (e.g. notebook) was specified."
     first_library = libraries[0]
-    assert first_library.get("notebook") is not None, f"Incorrect library configuration - expected a notebook."
+    assert (
+        first_library.get("notebook") is not None
+    ), "Incorrect library configuration - expected a notebook."
     first_library_path = first_library.get("notebook").get("path")
     assert first_library_path == path, f"Invalid notebook path. Found \"{first_library_path}\", expected \"{path}\" "
 
     configuration = spec.get("configuration")
-    assert configuration is not None, f"The two configuration parameters were not specified."
+    assert (
+        configuration is not None
+    ), "The two configuration parameters were not specified."
     datasets_path = configuration.get("datasets_path")
     assert datasets_path == DA.paths.datasets, f"Invalid datasets_path value. Found \"{datasets_path}\", expected \"{DA.paths.datasets}\"."
     spark_master = configuration.get("spark.master")
-    assert spark_master == f"local[*]", f"Invalid spark.master value. Expected \"local[*]\", found \"{spark_master}\"."
-    
+    assert (
+        spark_master == "local[*]"
+    ), f'Invalid spark.master value. Expected \"local[*]\", found \"{spark_master}\".'
+
     cluster = spec.get("clusters")[0]
     autoscale = cluster.get("autoscale")
-    assert autoscale is None, f"Autoscaling should be disabled."
-    
+    assert autoscale is None, "Autoscaling should be disabled."
+
     num_workers = cluster.get("num_workers")
     assert num_workers == 0, f"Expected the number of workers to be 0, found {num_workers}."
 
     development = spec.get("development")
     assert development == True, f"The pipline mode should be set to \"Development\"."
-    
+
     channel = spec.get("channel")
     assert channel is None or channel == "CURRENT", f"Expected the channel to be Current but found {channel}."
-    
+
     photon = spec.get("photon")
-    assert photon == True, f"Expected Photon to be enabled."
-    
+    assert photon == True, "Expected Photon to be enabled."
+
     continuous = spec.get("continuous")
     assert continuous == False, f"Expected the Pipeline mode to be \"Triggered\", found \"Continuous\"."
 

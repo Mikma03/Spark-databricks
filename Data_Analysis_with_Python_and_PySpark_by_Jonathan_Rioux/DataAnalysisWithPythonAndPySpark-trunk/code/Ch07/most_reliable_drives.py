@@ -36,7 +36,7 @@ common_columns = list(
     reduce(lambda x, y: x.intersection(y), [set(df.columns) for df in data])
 )
 
-assert set(["model", "capacity_bytes", "date", "failure"]).issubset(
+assert {"model", "capacity_bytes", "date", "failure"}.issubset(
     set(common_columns)
 )
 
@@ -84,15 +84,13 @@ def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top
     capacity_min = capacity_GB / (1 + precision)
     capacity_max = capacity_GB * (1 + precision)
 
-    answer = (
-        data.where(f"capacity_GB between {capacity_min} and {capacity_max}")  # <1>
+    return (
+        data.where(
+            f"capacity_GB between {capacity_min} and {capacity_max}"
+        )  # <1>
         .orderBy("failure_rate", "capacity_GB", ascending=[True, False])
         .limit(top_n)  # <2>
     )
-
-    return answer
 # end::ch07-code-final-function[]
 
 
-if __name__ == "__main__":
-    pass

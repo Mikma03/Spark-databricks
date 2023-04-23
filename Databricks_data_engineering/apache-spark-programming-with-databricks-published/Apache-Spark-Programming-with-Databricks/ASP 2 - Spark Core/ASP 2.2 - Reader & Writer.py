@@ -260,7 +260,7 @@ display(events_df)
 
 # COMMAND ----------
 
-users_output_dir = working_dir + "/users.parquet"
+users_output_dir = f"{working_dir}/users.parquet"
 
 (users_df
  .write
@@ -337,7 +337,7 @@ print(database_name)
 
 # COMMAND ----------
 
-events_output_path = working_dir + "/delta/events"
+events_output_path = f"{working_dir}/delta/events"
 
 (events_df
  .write

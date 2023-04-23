@@ -162,7 +162,7 @@
 # COMMAND ----------
 
 for s in spark.streams.active:
-    print("Stopping " + s.id)
+    print(f"Stopping {s.id}")
     s.stop()
     s.awaitTermination()
 
@@ -195,7 +195,7 @@ for s in spark.streams.active:
 # COMMAND ----------
 
 for s in spark.streams.active:
-    print("Stopping " + s.id)
+    print(f"Stopping {s.id}")
     s.stop()
     s.awaitTermination()
 

@@ -389,7 +389,7 @@ us_subset_df[us_subset_df["Deaths"] < 1000].plot.scatter(x="Confirmed", y="Death
 import glob
 
 path = "/dbfs/databricks-datasets/COVID/CSSEGISandData/csse_covid_19_data/csse_covid_19_daily_reports"
-all_files = glob.glob(path + "/*.csv")
+all_files = glob.glob(f"{path}/*.csv")
 
 dfs = []
 
@@ -397,13 +397,13 @@ for filename in all_files:
   temp_df = pd.read_csv(filename)
   temp_df.columns = [c.replace("/", "_") for c in temp_df.columns]
   temp_df.columns = [c.replace(" ", "_") for c in temp_df.columns]
-  
+
   month, day, year = filename.split("/")[-1].replace(".csv", "").split("-")
   d = datetime.date(int(year), int(month), int(day))
   temp_df["Date"] = d
 
   dfs.append(temp_df)
-  
+
 all_days_df = pd.concat(dfs, axis=0, ignore_index=True, sort=False)
 all_days_df = all_days_df.drop(["Latitude", "Longitude", "Lat", "Long_", "FIPS", "Combined_Key", "Last_Update"], axis=1)
 

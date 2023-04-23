@@ -96,8 +96,8 @@ print("All test pass")
 
 # ANSWER
 
-coupons_checkpoint_path = working_dir + "/coupon-sales/checkpoint"
-coupons_output_path = working_dir + "/coupon-sales/output"
+coupons_checkpoint_path = f"{working_dir}/coupon-sales/checkpoint"
+coupons_output_path = f"{working_dir}/coupon-sales/output"
 
 coupon_sales_query = (coupon_sales_df
                       .writeStream

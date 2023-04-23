@@ -68,7 +68,7 @@ students_count = dbutils.widgets.get("students_count").strip()
 user_count = len(DA.client.scim.users.list())
 
 students_count = max(int(students_count), user_count) if students_count.isnumeric() else user_count
-    
+
 workspace = dbgems.get_browser_host_name() if dbgems.get_browser_host_name() else dbgems.get_notebooks_api_endpoint()
 workspace = DA.clean_string(workspace)
 
@@ -80,7 +80,9 @@ autoscale_min = 1 if is_smoke_test else math.ceil(students_count/20)
 autoscale_max = 1 if is_smoke_test else math.ceil(students_count/5)
 
 event_name = "Smoke Test" if is_smoke_test else dbutils.widgets.get("event_name")
-assert event_name is not None and len(event_name) >= 3, f"The parameter event_name must be specified with min-length of 3"
+assert (
+    event_name is not None and len(event_name) >= 3
+), "The parameter event_name must be specified with min-length of 3"
 event_name = DA.clean_string(event_name)
 
 # COMMAND ----------

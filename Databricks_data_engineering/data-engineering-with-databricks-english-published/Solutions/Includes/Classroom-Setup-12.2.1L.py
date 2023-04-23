@@ -128,7 +128,7 @@ def create_pipeline(self):
 def validate_pipeline_config(self):
     "Provided by DBAcademy, this function validates the configuration of the pipeline"
     import json
-    
+
     pipeline_name, path = self.get_pipeline_config()
 
     pipeline = self.client.pipelines().get_by_name(pipeline_name)
@@ -136,46 +136,56 @@ def validate_pipeline_config(self):
 
     spec = pipeline.get("spec")
     # print(json.dumps(spec, indent=4))
-    
+
     storage = spec.get("storage")
     assert storage == DA.paths.storage_location, f"Invalid storage location. Found \"{storage}\", expected \"{DA.paths.storage_location}\" "
-    
+
     target = spec.get("target")
     assert target == DA.db_name, f"Invalid target. Found \"{target}\", expected \"{DA.db_name}\" "
-    
+
     libraries = spec.get("libraries")
-    assert libraries is None or len(libraries) > 0, f"The notebook path must be specified."
-    assert len(libraries) == 1, f"More than one library (e.g. notebook) was specified."
+    assert (
+        libraries is None or len(libraries) > 0
+    ), "The notebook path must be specified."
+    assert (
+        len(libraries) == 1
+    ), "More than one library (e.g. notebook) was specified."
     first_library = libraries[0]
-    assert first_library.get("notebook") is not None, f"Incorrect library configuration - expected a notebook."
+    assert (
+        first_library.get("notebook") is not None
+    ), "Incorrect library configuration - expected a notebook."
     first_library_path = first_library.get("notebook").get("path")
     assert first_library_path == path, f"Invalid notebook path. Found \"{first_library_path}\", expected \"{path}\" "
 
     configuration = spec.get("configuration")
-    assert configuration is not None, f"The three configuration parameters were not specified."
+    assert (
+        configuration is not None
+    ), "The three configuration parameters were not specified."
     datasets_path = configuration.get("datasets_path")
     assert datasets_path == DA.paths.datasets, f"Invalid \"datasets_path\" value. Found \"{datasets_path}\", expected \"{DA.paths.datasets}\"."
     spark_master = configuration.get("spark.master")
-    assert spark_master == f"local[*]", f"Invalid \"spark.master\" value. Expected \"local[*]\", found \"{spark_master}\"."
+    assert (
+        spark_master == "local[*]"
+    ), f'Invalid \"spark.master\" value. Expected \"local[*]\", found \"{spark_master}\".'
     stream_source = configuration.get("source")
     assert stream_source == DA.paths.stream_path, f"Invalid \"source\" value. Expected \"{DA.paths.stream_path}\", found \"{stream_source}\"."
-    
+
     cluster = spec.get("clusters")[0]
     autoscale = cluster.get("autoscale")
-    assert autoscale is None, f"Autoscaling should be disabled."
-    
+    assert autoscale is None, "Autoscaling should be disabled."
+
     num_workers = cluster.get("num_workers")
     assert num_workers == 0, f"Expected the number of workers to be 0, found {num_workers}."
 
     development = spec.get("development")
     assert development == self.is_smoke_test(), f"The pipline mode should be set to \"Production\"."
-    
+
     channel = spec.get("channel")
     assert channel is None or channel == "CURRENT", f"Expected the channel to be Current but found {channel}."
-    
+
     photon = spec.get("photon")
-    assert photon == True, f"Expected Photon to be enabled."
-    
+    assert photon == True, "Expected Photon to be enabled."
+
     continuous = spec.get("continuous")
     assert continuous == True, f"Expected the Pipeline mode to be \"Continuous\", found \"Triggered\"."
 
@@ -278,28 +288,30 @@ def create_job(self):
 def validate_job_config(self):
     "Provided by DBAcademy, this function validates the configuration of the job"
     import json
-    
+
     pipeline_name, job_path = self.get_pipeline_config()
     job_name, notebook = self.get_job_config()
 
     job = self.client.jobs.get_by_name(job_name)
     assert job is not None, f"The job named \"{job_name}\" doesn't exist. Double check the spelling."
-    
+
     settings = job.get("settings")
-    assert settings.get("format") == "SINGLE_TASK", f"""Expected only one task."""
+    assert settings.get("format") == "SINGLE_TASK", """Expected only one task."""
 
     # Land-Data Task
 #     task_name = settings.get("task_key", None)
 #     assert task_name == "Land-Data", f"Expected the first task to have the name \"Land-Data\", found \"{task_name}\""
-    
+
     notebook_path = settings.get("notebook_task", {}).get("notebook_path")
     assert notebook_path == notebook, f"Invalid Notebook Path for the first task. Found \"{notebook_path}\", expected \"{notebook}\" "
 
     if not self.is_smoke_test():
         # Don't check the actual_cluster_id when running as a smoke test
-        
+
         actual_cluster_id = settings.get("existing_cluster_id", None)
-        assert actual_cluster_id is not None, f"The first task is not configured to use the current All-Purpose cluster"
+        assert (
+            actual_cluster_id is not None
+        ), "The first task is not configured to use the current All-Purpose cluster"
 
         expected_cluster_id = dbgems.get_tags().get("clusterId")
         if expected_cluster_id != actual_cluster_id:
@@ -318,7 +330,7 @@ def validate_job_config(self):
             quartz_cron_expression = schedule.get("quartz_cron_expression")
             if "0/2 * * * ?" not in quartz_cron_expression:
                 print(f"WARNING: Expected the schedule to be \"* 0/2 * * * ?\" but found \"{quartz_cron_expression}\".\n")
-    
+
     print("All tests passed!")
     
 

@@ -88,12 +88,13 @@ class ScalarNAFiller(
 
         # Test #3: if `inputCols` is set, then `outputCols`
         # must be a list of the same len()
-        if self.isSet("inputCols"):
-            if len(self.getInputCols()) != len(self.getOutputCols()):
-                raise ValueError(
-                    "The length of `inputCols` does not match"
-                    " the length of `outputCols`"
-                )
+        if self.isSet("inputCols") and len(self.getInputCols()) != len(
+            self.getOutputCols()
+        ):
+            raise ValueError(
+                "The length of `inputCols` does not match"
+                " the length of `outputCols`"
+            )
 
     def _transform(self, dataset):
         self.checkParams()

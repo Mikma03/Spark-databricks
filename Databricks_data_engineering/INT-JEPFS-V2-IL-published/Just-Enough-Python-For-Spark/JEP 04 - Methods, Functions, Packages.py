@@ -485,8 +485,7 @@ print(f"Example D: {sum_d}")
 
 def my_func(**kwargs):
   print("Arguments received:")
-  for key in kwargs:
-    value = kwargs[key]
+  for key, value in kwargs.items():
     print(f"  {key:15s} = {value}")
   print()
 
