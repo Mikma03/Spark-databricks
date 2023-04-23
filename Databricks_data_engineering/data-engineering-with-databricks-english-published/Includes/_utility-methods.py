@@ -63,7 +63,7 @@ class Paths():
         """
         max_key_len = 0
         for key in self.__dict__: 
-            max_key_len = len(key) if len(key) > max_key_len else max_key_len
+            max_key_len = max(len(key), max_key_len)
         for key in self.__dict__:
             label = f"{padding}{self_name}paths.{key}: "
             print(label.ljust(max_key_len+13) + self.__dict__[key])
@@ -210,7 +210,12 @@ def cleanup(self, validate=True):
         try: stream.awaitTermination()
         except: pass # Bury any exceptions
 
-    if spark.sql(f"SHOW DATABASES").filter(f"databaseName == '{self.db_name}'").count() == 1:
+    if (
+        spark.sql("SHOW DATABASES")
+        .filter(f"databaseName == '{self.db_name}'")
+        .count()
+        == 1
+    ):
         print(f"Dropping the database \"{self.db_name}\"")
         spark.sql(f"DROP DATABASE {self.db_name} CASCADE")
 
@@ -390,17 +395,18 @@ def list_r(self, path, prefix=None, results=None):
     Utility method used by the dataset validation, this method performs a recursive list of the specified path and returns the sorted list of paths.
     """
     if prefix is None: prefix = path
-    if results is None: results = list()
-    
+    if results is None:
+        results = []
+
     try: files = dbutils.fs.ls(path)
     except: files = []
-    
+
     for file in files:
         data = file.path[len(prefix):]
         results.append(data)
         if file.isDir(): 
             self.list_r(file.path, prefix, results)
-        
+
     results.sort()
     return results
 
@@ -446,19 +452,19 @@ def do_validate(self):
     """
     
     local_files = self.list_r(self.paths.datasets)
-    
+
     for file in local_files:
         if file not in self.remote_files:
             print(f"\n  - Found extra file: {file}")
-            print(f"  - This problem can be fixed by reinstalling the datasets")
+            print("  - This problem can be fixed by reinstalling the datasets")
             return False
 
     for file in self.remote_files:
         if file not in local_files:
             print(f"\n  - Missing file: {file}")
-            print(f"  - This problem can be fixed by reinstalling the datasets")
+            print("  - This problem can be fixed by reinstalling the datasets")
             return False
-        
+
     return True
 
 DBAcademyHelper.monkey_patch(do_validate)
@@ -471,17 +477,16 @@ def validate_datasets(self, fail_fast:bool):
     """
     import time
     start = int(time.time())
-    print(f"Validating the local copy of the datsets", end="...")
-    
+    print("Validating the local copy of the datsets", end="...")
+
     result = self.do_validate()
     print(f"({int(time.time())-start} seconds)")
-    
+
     if not result:
         if fail_fast:
             raise Exception("Validation failed - see previous messages for more information.")
-        else:
-            print("\nAttempting to repair local dataset...\n")
-            self.install_datasets(reinstall=True, repairing=True)
+        print("\nAttempting to repair local dataset...\n")
+        self.install_datasets(reinstall=True, repairing=True)
 
 DBAcademyHelper.monkey_patch(validate_datasets)
 
@@ -666,20 +671,20 @@ def copy_source_dataset(src_path, dst_path, format, name):
 def create_eltwss_users_update():
     import time
     start = int(time.time())
-    print(f"Creating the users_dirty table", end="...")
+    print("Creating the users_dirty table", end="...")
 
     # REFACTORING - Making lesson-specific copy
 #     dbutils.fs.cp(f"{DA.paths.datasets}/ecommerce/raw/users-30m",
 #                   f"{DA.paths.working_dir}/users-30m", True)
-    
+
     spark.sql(f"""
         CREATE OR REPLACE TABLE users_dirty AS
         SELECT *, current_timestamp() updated 
         FROM parquet.`{DA.paths.datasets}/ecommerce/raw/users-30m`
     """)
-    
+
     spark.sql("INSERT INTO users_dirty VALUES (NULL, NULL, NULL, NULL), (NULL, NULL, NULL, NULL), (NULL, NULL, NULL, NULL)")
-    
+
     total = spark.read.table("users_dirty").count()
     print(f"({int(time.time())-start} seconds / {total:,} records)")
 
@@ -690,7 +695,9 @@ class DltDataFactory:
         self.stream_path = stream_path
         self.source = f"{DA.paths.datasets}/healthcare/tracker/streaming"
         try:
-            self.curr_mo = 1 + int(max([x[1].split(".")[0] for x in dbutils.fs.ls(self.stream_path)]))
+            self.curr_mo = 1 + int(
+                max(x[1].split(".")[0] for x in dbutils.fs.ls(self.stream_path))
+            )
         except:
             self.curr_mo = 1
     

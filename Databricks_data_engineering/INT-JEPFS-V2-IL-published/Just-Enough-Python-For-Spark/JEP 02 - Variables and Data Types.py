@@ -259,7 +259,7 @@ print(best_food)
 # COMMAND ----------
 
 # Without f-strings, we have to concatenate the values
-text = "The best food ever is" + best_food + ", especially when it's hot outside!"
+text = f"The best food ever is{best_food}, especially when it's hot outside!"
 print(text)
 
 # COMMAND ----------
@@ -284,7 +284,7 @@ print(f"The best food ever is {best_food}, especially when it's hot outside!")
 
 # COMMAND ----------
 
-232 == 232
+True
 
 # COMMAND ----------
 
@@ -293,7 +293,7 @@ print(f"The best food ever is {best_food}, especially when it's hot outside!")
 
 # COMMAND ----------
 
-723 != 723
+False
 
 # COMMAND ----------
 

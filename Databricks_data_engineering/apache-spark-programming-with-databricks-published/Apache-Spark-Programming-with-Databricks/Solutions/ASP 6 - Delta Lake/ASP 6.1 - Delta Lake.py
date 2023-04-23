@@ -249,7 +249,7 @@ delta_table.vacuum(0)
 
 # COMMAND ----------
 
-display(dbutils.fs.ls(delta_path + "/state=CA/"))
+display(dbutils.fs.ls(f"{delta_path}/state=CA/"))
 
 # COMMAND ----------
 

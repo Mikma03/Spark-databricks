@@ -265,11 +265,7 @@ for i in range(12, 0, -3):
 breakfast_list = ["pancakes", "eggs", "apple", "chicken"]
 print(f"Before transformation: {breakfast_list}")
 
-caps_list = []  # Create an empty list
-      
-for item in breakfast_list:
-  caps_list.append(item.capitalize())
-  
+caps_list = [item.capitalize() for item in breakfast_list]
 print(f"After transformation:  {caps_list}")
 
 # COMMAND ----------
@@ -386,12 +382,9 @@ choice = "bacon"
 
 if choice in breakfast_dict:
   print(f"{choice.upperCase()} has {breakfast_dict[choice]} calories")
-  
-elif choice not in breakfast_dict:
-  print(f"""I couldn't find "{choice}" in the dictionary""")
-  
+
 else:
-  print("This logically cannot happen :-)")
+  print(f"""I couldn't find "{choice}" in the dictionary""")
 
 # COMMAND ----------
 
@@ -439,8 +432,8 @@ print(f"After delete:  {breakfast_dict}")
 breakfast_dict = {"eggs": 160, "apple": 100, "pancakes": 400, "waffles": 300,}
 print("Food          Calories")
 
-for food in breakfast_dict:
-  print(f"{food:13} {breakfast_dict[food]}")
+for food, value_ in breakfast_dict.items():
+  print(f"{food:13} {value_}")
 
 # COMMAND ----------
 
@@ -603,7 +596,7 @@ class Person:
     print(f'{self.first_name} says, "{greeting}"')
     
   def full_name(self):
-    return self.last_name + ", " + self.first_name
+    return f"{self.last_name}, {self.first_name}"
 
 person1 = Person("Ming-Na", "Wen")
 person2 = Person(first_name="Anil", last_name="Kapoor")

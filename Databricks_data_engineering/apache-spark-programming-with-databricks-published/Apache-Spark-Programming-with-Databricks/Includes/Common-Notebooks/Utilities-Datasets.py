@@ -80,9 +80,9 @@ def get_active_streams():
 
 def stop_stream(s):
   try:
-    print("Stopping the stream {}.".format(s.name))
+    print(f"Stopping the stream {s.name}.")
     s.stop()
-    print("The stream {} was stopped.".format(s.name))
+    print(f"The stream {s.name} was stopped.")
   except:
     # In extream cases, this funtion may throw an ignorable error.
     print("An [ignorable] error has occured while stoping the stream.")
@@ -99,11 +99,17 @@ def stop_all_streams():
 
 def until_stream_is_ready(name, progressions=3):
   import time
-  queries = list(filter(lambda query: query.name == name or query.name == name + "_p", get_active_streams()))
+  queries = list(
+      filter(lambda query: query.name in [name, f"{name}_p"],
+             get_active_streams()))
 
-  while (len(queries) == 0 or len(queries[0].recentProgress) < progressions):
+  while not queries or len(queries[0].recentProgress) < progressions:
     time.sleep(5) # Give it a couple of seconds
-    queries = list(filter(lambda query: query.name == name or query.name == name + "_p", get_active_streams()))
+    queries = list(
+        filter(
+            lambda query: query.name in [name, f"{name}_p"],
+            get_active_streams(),
+        ))
 
-  print("The stream {} is active and ready.".format(name))
+  print(f"The stream {name} is active and ready.")
 

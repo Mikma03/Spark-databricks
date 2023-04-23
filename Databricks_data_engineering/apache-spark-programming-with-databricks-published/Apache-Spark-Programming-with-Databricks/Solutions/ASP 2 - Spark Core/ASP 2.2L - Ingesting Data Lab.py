@@ -129,7 +129,7 @@ print("All test pass")
 # COMMAND ----------
 
 # ANSWER
-products_output_path = working_dir + "/delta/products"
+products_output_path = f"{working_dir}/delta/products"
 (products_df
  .write
  .format("delta")

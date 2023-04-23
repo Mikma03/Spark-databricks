@@ -8,7 +8,7 @@ DA.init()
 
 # COMMAND ----------
 
-rows = spark.sql(f"show databases").collect()
+rows = spark.sql("show databases").collect()
 for row in rows:
     db_name = row[0]
     if db_name.startswith(DA.db_name_prefix):

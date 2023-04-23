@@ -310,9 +310,9 @@ dbutils.widgets.multiselect("colors", "orange", ["red", "orange", "black", "blue
 name = dbutils.widgets.get("name")
 colors = dbutils.widgets.get("colors").split(",")
 
-html = "<div>Hi {}! Select your color preference.</div>".format(name)
+html = f"<div>Hi {name}! Select your color preference.</div>"
 for c in colors:
-    html += """<label for="{}" style="color:{}"><input type="radio"> {}</label><br>""".format(c, c, c)
+    html += f"""<label for="{c}" style="color:{c}"><input type="radio"> {c}</label><br>"""
 
 displayHTML(html)
 

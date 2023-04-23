@@ -108,7 +108,7 @@ print("All test pass")
 # COMMAND ----------
 
 # TODO
-products_output_path = working_dir + "/delta/products"
+products_output_path = f"{working_dir}/delta/products"
 products_df.FILL_IN
 
 # COMMAND ----------

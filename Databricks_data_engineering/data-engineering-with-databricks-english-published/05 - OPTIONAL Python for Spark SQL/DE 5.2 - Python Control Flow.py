@@ -348,7 +348,7 @@ def three_times(number):
         return int(number) * 3
     except ValueError as e:
         print(f"You passed the string variable '{number}'.\n")
-        print(f"Try passing an integer instead.")
+        print("Try passing an integer instead.")
         return None
 
 # COMMAND ----------

@@ -22,7 +22,7 @@
 # COMMAND ----------
 
 sales_df = spark.read.parquet(f"{datasets_dir}/sales/sales.parquet")
-delta_sales_path = working_dir + "/delta-sales"
+delta_sales_path = f"{working_dir}/delta-sales"
 
 # COMMAND ----------
 

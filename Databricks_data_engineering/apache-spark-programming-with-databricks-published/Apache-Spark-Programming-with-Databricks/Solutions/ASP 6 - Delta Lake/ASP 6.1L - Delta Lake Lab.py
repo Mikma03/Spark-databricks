@@ -22,7 +22,7 @@
 # COMMAND ----------
 
 sales_df = spark.read.parquet(f"{datasets_dir}/sales/sales.parquet")
-delta_sales_path = working_dir + "/delta-sales"
+delta_sales_path = f"{working_dir}/delta-sales"
 
 # COMMAND ----------
 
@@ -100,7 +100,9 @@ print("All test pass")
 
 # ANSWER
 spark.sql("DROP TABLE IF EXISTS sales_delta")
-spark.sql("CREATE TABLE sales_delta USING DELTA LOCATION '{}'".format(delta_sales_path))
+spark.sql(
+    f"CREATE TABLE sales_delta USING DELTA LOCATION '{delta_sales_path}'"
+)
 
 # COMMAND ----------
 

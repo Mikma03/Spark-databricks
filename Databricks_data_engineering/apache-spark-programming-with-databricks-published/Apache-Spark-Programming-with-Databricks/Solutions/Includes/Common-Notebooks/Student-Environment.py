@@ -33,7 +33,7 @@ def get_username() -> str:
 # Get the user's userhome
 def get_userhome() -> str:
   username = get_username()
-  return "dbfs:/user/{}".format(username)
+  return f"dbfs:/user/{username}"
 
 def get_module_name() -> str:
   return "aspwd"
@@ -64,16 +64,16 @@ def get_database_name(username:str, module_name:str, lesson_name:str) -> str:
   user = re.sub("[^a-zA-Z0-9]", "_", username)
   module = re.sub("[^a-zA-Z0-9]", "_", module_name)
   lesson = re.sub("[^a-zA-Z0-9]", "_", lesson_name)
-  database_name = f"dbacademy_{user}_{module}_{lesson}".replace("__", "_").replace("__", "_").replace("__", "_").replace("__", "_").lower()
-  return database_name
+  return (f"dbacademy_{user}_{module}_{lesson}".replace("__", "_").replace(
+      "__", "_").replace("__", "_").replace("__", "_").lower())
 
 
 # Create a user-specific database
 def create_user_database(username:str, module_name:str, lesson_name:str) -> str:
   database_name = get_database_name(username, module_name, lesson_name)
 
-  spark.sql("CREATE DATABASE IF NOT EXISTS {}".format(database_name))
-  spark.sql("USE {}".format(database_name))
+  spark.sql(f"CREATE DATABASE IF NOT EXISTS {database_name}")
+  spark.sql(f"USE {database_name}")
 
   return database_name
 
@@ -103,10 +103,10 @@ def delete_path(path):
       if file.is_dir:
         deletePath(file.path)
       else:
-        raise IOError("Unable to delete file: " + file.path)
+        raise IOError(f"Unable to delete file: {file.path}")
 
   if dbutils.fs.rm(path, True) == False:
-    raise IOError("Unable to delete directory: " + path)
+    raise IOError(f"Unable to delete directory: {path}")
 
 # ****************************************************************************
 # Utility method to clean up the workspace at the end of a lesson
@@ -153,7 +153,7 @@ def classroom_cleanup(drop_database:bool = True):
 
 # Utility method to delete a database
 def delete_tables(database):
-  spark.sql("DROP DATABASE IF EXISTS {} CASCADE".format(database))
+  spark.sql(f"DROP DATABASE IF EXISTS {database} CASCADE")
 
 # ****************************************************************************
 # Placeholder variables for coding challenge type specification

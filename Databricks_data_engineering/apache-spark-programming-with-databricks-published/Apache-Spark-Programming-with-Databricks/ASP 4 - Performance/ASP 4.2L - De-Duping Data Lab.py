@@ -62,7 +62,7 @@ dbutils.fs.head(f"{datasets_dir}/people/people-with-dups.txt")
 # TODO
 
 source_file = f"{datasets_dir}/people/people-with-dups.txt"
-delta_dest_dir = working_dir + "/people"
+delta_dest_dir = f"{working_dir}/people"
 
 # In case it already exists
 dbutils.fs.rm(delta_dest_dir, True)

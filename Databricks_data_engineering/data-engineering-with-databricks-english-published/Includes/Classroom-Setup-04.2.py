@@ -17,7 +17,7 @@ DA.paths.sales_csv = f"{DA.paths.working_dir}/sales-csv"
 dbutils.fs.cp(f"{DA.paths.datasets}/ecommerce/raw/sales-csv", DA.paths.sales_csv, True)
 
 start = int(time.time())
-print(f"Creating the users table", end="...")
+print("Creating the users table", end="...")
 
 DA.paths.ecommerce_db = f"{DA.paths.working_dir}/ecommerce.db"
 datasource_path = f"{DA.paths.datasets}/ecommerce/raw/users-historical"
@@ -28,7 +28,7 @@ dbutils.fs.mkdirs(f"file:{db_temp_dir}")
 db_temp_path = f"{db_temp_dir}/ecommerce.db"
 
 # Spark => JDBC cannot create the database reliably but Pandas can.
-conn = sqlite3.connect(db_temp_path) 
+conn = sqlite3.connect(db_temp_path)
 c = conn.cursor()
 c.execute('CREATE TABLE IF NOT EXISTS users (user_id string, user_first_touch_timestamp decimal(20,0), email string)')
 conn.commit()
