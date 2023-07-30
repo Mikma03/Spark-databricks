@@ -1,4 +1,26 @@
 
+<!-- TOC -->
+
+- [Microsoft dedicated paths](#microsoft-dedicated-paths)
+  - [Microsoft path for Databricks - Data Engineering](#microsoft-path-for-databricks---data-engineering)
+  - [Microsoft path for Databricks - Machine Learning](#microsoft-path-for-databricks---machine-learning)
+  - [Microsoft path for Databricks - Data Science](#microsoft-path-for-databricks---data-science)
+- [Apache Spark Books](#apache-spark-books)
+    - [Learning Spark, 2nd Edition](#learning-spark-2nd-edition)
+    - [Spark: The Definitive Guide](#spark-the-definitive-guide)
+    - [Spark in Action, Second Edition](#spark-in-action-second-edition)
+- [Hadoop](#hadoop)
+  - [Introduction to Hadoop Security](#introduction-to-hadoop-security)
+  - [The Ultimate Hands-On Hadoop](#the-ultimate-hands-on-hadoop)
+  - [Hadoop: The Definitive Guide, 4th Edition](#hadoop-the-definitive-guide-4th-edition)
+  - [Expert Hadoop® Administration](#expert-hadoop-administration)
+- [PySpark books](#pyspark-books)
+  - [Essential PySpark for Scalable Data Analytics](#essential-pyspark-for-scalable-data-analytics)
+  - [Data Analysis with Python and PySpark](#data-analysis-with-python-and-pyspark)
+  - [PySpark SQL Recipes: With HiveQL, Dataframe and Graphframes](#pyspark-sql-recipes-with-hiveql-dataframe-and-graphframes)
+  - [Beginning Apache Spark 3: With DataFrame, Spark SQL, Structured Streaming, and Spark Machine Learning Library](#beginning-apache-spark-3-with-dataframe-spark-sql-structured-streaming-and-spark-machine-learning-library)
+
+<!-- /TOC -->
 
 # Microsoft dedicated paths
 
@@ -13,16 +35,6 @@ https://docs.microsoft.com/en-us/learn/paths/build-operate-machine-learning-solu
 ## Microsoft path for Databricks - Data Science
 
 https://docs.microsoft.com/en-ie/learn/paths/perform-data-science-azure-databricks/?WT.mc_id=AI-MVP-5004069
-
-# Databricks Academy
-
-## Databricks path for certification - Spark Developer
-
-https://partner-academy.databricks.com/pages/21/home
-
-## Data Engineer Learning Plan
-
-https://partner-academy.databricks.com/learn/lp/10/data-engineer-learning-plan
 
 # Apache Spark Books
 
