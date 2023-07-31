@@ -11,6 +11,10 @@
 - [Resource manager](#resource-manager)
 - [What is Spark?](#what-is-spark)
 - [Driver and Executor i Spark](#driver-and-executor-i-spark)
+- [What is a Directed Acyclic Graph (DAG)?](#what-is-a-directed-acyclic-graph-dag)
+  - [DAG in Apache Spark](#dag-in-apache-spark)
+  - [Example](#example)
+  - [Conclusion](#conclusion-1)
 
 <!-- /TOC -->
 
@@ -123,3 +127,33 @@ Architecture of Spark App
 Driver is responsible for program flow. Executor is responsible for executing task. For example when we want load data from S3 location then Executor will load data and Driver instruct that operation.
 
 So driver telling what to do and when; executor will execute tasks.
+
+## What is a Directed Acyclic Graph (DAG)?
+
+A Directed Acyclic Graph (DAG) is a finite directed graph with no directed cycles. This means that it consists of vertices and edges, with each edge directed from one vertex to another, such that there is no way to start at any vertex and follow a consistently directed sequence of edges that eventually loops back to that same vertex.
+
+### DAG in Apache Spark
+
+In Apache Spark, a DAG represents a sequence of computations performed on data. Here's how it works:
+
+1. **Stages**: Spark breaks down the job into stages, which are sets of tasks that can be executed in parallel. Stages are created based on transformations and actions applied to the data. Transformations that have a narrow dependency (like `map`) allow tasks to be executed in parallel, while transformations with a wide dependency (like `reduceByKey`) may cause a new stage to be created.
+    
+2. **Tasks**: Each stage consists of multiple tasks that can be executed in parallel. A task is the smallest unit of work in Spark, representing a computation on a partition of the data.
+    
+3. **Vertices and Edges**: In the DAG, vertices represent the RDDs (Resilient Distributed Datasets), and the edges represent the transformations applied to the RDDs.
+    
+4. **Execution**: When an action is called on an RDD, Spark constructs a DAG representing the transformations that need to be executed. Then, the DAG is divided into stages, and the stages are submitted to the cluster manager for execution.
+    
+5. **Fault Tolerance**: One of the key benefits of the DAG model in Spark is fault tolerance. If a task fails, Spark can recompute the lost data by looking at the DAG and only re-executing the necessary stages. This is more efficient than Hadoop's MapReduce, where the entire job may need to be rerun.
+    
+
+### Example
+
+Consider a simple Spark job that reads data, applies a `map` transformation, and then a `reduceByKey` transformation. The DAG for this job would consist of two stages:
+
+- **Stage 1**: Contains tasks for the `map` transformation. These tasks can be executed in parallel.
+- **Stage 2**: Contains tasks for the `reduceByKey` transformation. This stage depends on the completion of Stage 1.
+
+### Conclusion
+
+The DAG model in Apache Spark provides a clear and efficient way to represent and execute complex data processing tasks. By breaking down the job into stages and tasks, and representing them in a graph structure, Spark can execute tasks in parallel, provide fault tolerance, and optimize the execution of the job. It's a key reason why Spark is known for its performance and flexibility in handling large-scale data processing.
