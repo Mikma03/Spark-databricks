@@ -29,3 +29,6 @@
 # Apache Spark In-Depth (Spark with Scala)
 
 - https://www.udemy.com/course/apache-spark-in-depth-spark-with-scala/
+
+# Databricks Certified Data Engineer Associate
+- https://www.udemy.com/course/databricks-certified-data-engineer-associate/
