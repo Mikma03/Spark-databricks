@@ -15,6 +15,7 @@
   - [DAG in Apache Spark](#dag-in-apache-spark)
   - [Example](#example)
   - [Conclusion](#conclusion-1)
+- [Spark engines](#spark-engines)
 
 <!-- /TOC -->
 
@@ -157,3 +158,24 @@ Consider a simple Spark job that reads data, applies a `map` transformation, and
 ### Conclusion
 
 The DAG model in Apache Spark provides a clear and efficient way to represent and execute complex data processing tasks. By breaking down the job into stages and tasks, and representing them in a graph structure, Spark can execute tasks in parallel, provide fault tolerance, and optimize the execution of the job. It's a key reason why Spark is known for its performance and flexibility in handling large-scale data processing.
+
+## Spark engines
+
+Apache Spark uses a custom-built engine to process data. Here's a breakdown of some of the key components:
+
+1. **Spark Core Engine**: This is the foundation of the overall project. It provides in-memory computing capabilities to deliver speed, a generalized execution model, and the flexibility to run in various environments.
+    
+2. **Resilient Distributed Datasets (RDDs)**: RDDs are the fundamental data structures of Spark. They are immutable distributed collections of objects, which can be processed in parallel. RDDs enable fault-tolerant capabilities by allowing datasets to be recomputed in case of failure.
+    
+3. **Catalyst Optimizer**: This is a query optimization framework in Spark SQL that applies rule-based transformations to logical query plans. It uses features of the Scala programming language to make it easy to add new optimization techniques and features to Spark.
+    
+4. **Tungsten**: Tungsten provides a physical execution engine that constructs bytecode for expression evaluation and leverages native memory management (off-heap) to manage memory explicitly. This leads to more CPU-efficient execution.
+    
+5. **DAG Scheduler**: Spark's scheduler runs stages of tasks based on the dependencies in a Directed Acyclic Graph (DAG). This allows for more optimized execution plans and recovery from node failures.
+    
+6. **Driver and Executors**: The Spark application runs as an independent set of processes on a cluster, coordinated by the SparkContext object in your main program (called the driver program). Executors are worker nodes' processes in charge of running individual tasks in a given Spark job.
+    
+7. **Various Libraries**: Spark also includes libraries for diverse tasks, including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming for stream processing.
+    
+
+So, the engine inside Apache Spark is not a single component but a combination of various tools, libraries, and technologies designed to work together to process large-scale data efficiently.
