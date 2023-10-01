@@ -14,4 +14,22 @@ This is based on:
 This is based on:
 
 - Databricks Certified Data Engineer Associate - Preparation
+
   - https://www.udemy.com/course/databricks-certified-data-engineer-associate/
+
+- GitHub repo of that course:
+  - https://github.com/derar-alhussein/Databricks-Certified-Data-Engineer-Associate
+
+## course-03
+
+This is based on:
+
+- Apache Spark In-Depth
+  - https://www.udemy.com/course/apache-spark-in-depth-spark-with-scala/
+
+## course-04
+
+This is based on:
+
+- Databricks Certified Data Engineer Associate Exam Guide
+  - https://www.udemy.com/course/databricks-data-engineer-associate/
