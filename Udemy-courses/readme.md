@@ -33,3 +33,10 @@ This is based on:
 
 - Databricks Certified Data Engineer Associate Exam Guide
   - https://www.udemy.com/course/databricks-data-engineer-associate/
+
+## course-05
+
+This is based on:
+
+- Associate Developer for Apache Spark
+  - https://www.udemy.com/course/databricks-associate-developer-for-apache-spark/

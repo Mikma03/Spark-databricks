@@ -104,12 +104,25 @@ Spark 1.0 was released in 2014. Created as PhD project in Berkley. 2020 year Spa
 
 ## Driver and Executor i Spark
 
+Spark driver
+
+As the part of the Spark application responsible for instantiating a SparkSession, the Spark driver has multiple roles: it communicates with the cluster manager; it requests resources (CPU, memory, etc.) from the cluster manager for Spark’s executors (JVMs); and it transforms all the Spark operations into DAG computations, schedules them, and distributes their execution as tasks across the Spark executors. Once the resources are allocated, it communicates directly with the executors.
+
 Architecture of Spark App
 - https://spark.apache.org/docs/latest/cluster-overview.html#components
 
 Driver is responsible for program flow. Executor is responsible for executing task. For example when we want load data from S3 location then Executor will load data and Driver instruct that operation.  
 
 So driver telling what to do and when; executor will execute tasks.
+
+
+Cluster manager
+
+The cluster manager is responsible for managing and allocating resources for the cluster of nodes on which your Spark application runs. Currently, Spark supports four cluster managers: the built-in standalone cluster manager, Apache Hadoop YARN, Apache Mesos, and Kubernetes.
+
+Spark executor
+
+A Spark executor runs on each worker node in the cluster. The executors communicate with the driver program and are responsible for executing tasks on the workers. In most deployments modes, only a single executor runs per node.
 
 
 ## What is a Directed Acyclic Graph (DAG)?
@@ -171,4 +184,7 @@ As noted, transformations are operations that Spark evaluates lazily. A huge adv
 Transformations can be classified as having either narrow dependencies or wide dependencies. Any transformation where a single output partition can be computed from a single input partition is a narrow transformation. For example, in the previous code snippet, filter() and contains() represent narrow transformations because they can operate on a single partition and produce the resulting output partition without any exchange of data.
 
 However, transformations such as groupBy() or orderBy() instruct Spark to perform wide transformations, where data from other partitions is read in, combined, and written to disk. If we were to sort the filtered DataFrame from the preceding example by calling .orderBy(), each partition will be locally sorted, but we need to force a shuffle of data from each of the executor’s partitions across the cluster to sort all of the records. In contrast to narrow transformations, wide transformations require output from other partitions to compute the final aggregation.
+
+
+### Transformations vs actions
 
